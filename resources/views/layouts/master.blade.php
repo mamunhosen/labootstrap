@@ -23,15 +23,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#">Laravel 5</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Contact</a></li>
+          <li class="active"><a href="index">Home <span class="sr-only">(current)</span></a></li>
+          <!-- <li><a href="#">Contact</a></li> -->
         </ul>
       
 
@@ -54,7 +54,8 @@
     <div class="col-sm-8 col-sm-offset-2 ContentBg">
     
       @yield('content')
-      @yield('createContent')
+      @yield('createContact')
+      @yield('store')
       
     </div>
   </div>

@@ -2,6 +2,14 @@
 @section('title', 'Home')
 
 @section('content')
+<!-- @if(Session::has('success'))
+    <div class="container">
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Success!</strong> {{Session::get('success')}}
+        </div>
+    </div>
+@endif -->
 <a href="create" class="btn btn-primary pull-right">Create Contact</a>
 <table class='table table-bordered'>
 	<thead>
@@ -13,16 +21,18 @@
 		</tr>
 	</thead>
 	<tbody>
+	@foreach($users as $contact)
 		<tr>
-			<td>Hossain Mamun</td>
-			<td>01716340278</td>
-			<td>hossainmamun278@gmail.com</td>
+			<td>{{$contact->contact_name}}</td>
+			<td>{{$contact->contact_number}}</td>
+			<td>{{$contact->contact_email}}</td>
 			<td>
-				<a href="" class="btn btn-warning"><span class="glyphicon glyphicon-edit"> Edit</span></a>
-				<a href="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> Delete</span></a>
+				<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"> Edit</span></a>
+				<a href="{{url('delete')}}/{{$contact->contact_id}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> Delete</span></a>
 			</td>
 		</tr>
-		<tr>
+	@endforeach
+		<!-- <tr>
 			<td>ABCD</td>
 			<td>01715456789</td>
 			<td>abcd@gmail.com</td>
@@ -30,7 +40,7 @@
 				<a href="" class="btn btn-warning"><span class="glyphicon glyphicon-edit"> Edit</span></a>
 				<a href="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> Delete</span></a>
 			</td>
-		</tr>
+		</tr> -->
 	</tbody>
 </table>
 
