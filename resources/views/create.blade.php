@@ -6,7 +6,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">Create Contact</div>
     <div class="panel-body">
-     <form method='POST' action="store">
+     <form method='POST' action="{{url('store')}}">
       <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
         <div class="form-group">
            <label for="c_name">Contact Name:</label>

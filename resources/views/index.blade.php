@@ -27,7 +27,7 @@
 			<td>{{$contact->contact_number}}</td>
 			<td>{{$contact->contact_email}}</td>
 			<td>
-				<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"> Edit</span></a>
+				<a href="{{url('edit')}}/{{$contact->contact_id}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"> Edit</span></a>
 				<a href="{{url('delete')}}/{{$contact->contact_id}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> Delete</span></a>
 			</td>
 		</tr>

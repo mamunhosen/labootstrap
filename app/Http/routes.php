@@ -19,6 +19,8 @@ Route::get('index', 'bootstrap_con@index');
 Route::get('create', 'bootstrap_con@create');
 Route::post('store', 'bootstrap_con@store');
 Route::get('delete/{id}', 'bootstrap_con@delete');
+Route::get('edit/{id}', 'bootstrap_con@edit');
+Route::post('update/{id}', 'bootstrap_con@update');
 
 
 /*

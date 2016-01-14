@@ -7,7 +7,9 @@
 
 table{
 	margin-top: 20px;
+	
 }
+
 table>thead>tr>th{
 	text-align: center;
 	font-size: 20px;
