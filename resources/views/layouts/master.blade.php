@@ -87,6 +87,7 @@
 
 
 {!!Html::script('https://code.jquery.com/jquery-2.2.0.min.js')!!}
+{!!Html::script('js/custom.js')!!}
 {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')!!}
 </body>
 </html>

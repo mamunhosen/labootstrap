@@ -34,6 +34,8 @@ Route::post('update/{id}', 'bootstrap_con@update');
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => 'web'], function () {
+    Route::get('create', 'bootstrap_con@create');
+    Route::post('store', 'bootstrap_con@store');
+
 });

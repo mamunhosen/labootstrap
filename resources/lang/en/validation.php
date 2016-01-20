@@ -89,9 +89,18 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'contact_name' => [
+            'min' => 'Contact Name Must Be 4 Charcters',
+            'max'  =>'Contact Name Must be Less Than 25 Charcters',
+            'unique' =>'The Given Name Has Already Been Taken',
         ],
+
+        'contact_number'=>[
+             'min' => 'Contact Number at least 11',
+             'max' => 'Contact Number May not be Greater Than 16',
+
+
+        ]
     ],
 
     /*

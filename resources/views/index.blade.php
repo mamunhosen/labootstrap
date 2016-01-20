@@ -10,25 +10,27 @@
         </div>
     </div>
 @endif -->
-<a href="create" class="btn btn-primary pull-right">Create Contact</a>
+<a href="{{url('create')}}" class="btn btn-primary pull-right">Create Contact</a>
 <table class='table table-bordered'>
 	<thead>
 		<tr>
 			<th>Contact Name</th>
 			<th>Number</th>
 			<th>Email</th>
-			<th>Action</th>
+			<th><span class="label label-default">Action</span></th>
 		</tr>
 	</thead>
 	<tbody>
+     
 	@foreach($users as $contact)
+
 		<tr>
 			<td>{{$contact->contact_name}}</td>
 			<td>{{$contact->contact_number}}</td>
 			<td>{{$contact->contact_email}}</td>
 			<td>
 				<a href="{{url('edit')}}/{{$contact->contact_id}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"> Edit</span></a>
-				<a href="{{url('delete')}}/{{$contact->contact_id}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> Delete</span></a>
+				<a href="{{url('delete')}}/{{$contact->contact_id}}" class="btn btn-danger dlt_contact"><span class="glyphicon glyphicon-trash"> Delete</span></a>
 			</td>
 		</tr>
 	@endforeach
@@ -43,6 +45,6 @@
 		</tr> -->
 	</tbody>
 </table>
-
+{!! $users->render() !!}
 @stop
 

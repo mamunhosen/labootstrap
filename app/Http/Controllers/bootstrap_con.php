@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\labootstrap_model;
+use App\contactModel;
 use DB;
 use Input;
-use Illuminate\Http\Request;
-use App\Http\Requests;
+//use Illuminate\Http\Request;
+use App\Http\Requests\contactRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Redirect;
 class bootstrap_con extends Controller
 {
     public function index(){
-    $users = DB::table('contactlaravel')->get();
-    return view('index',['users' => $users]);
+    //$users = DB::table('contactLaravel')->get();
+        $users['users']=contactModel::orderBy('contact_id', 'desc')->paginate(5);
+        return view('index', $users);
     }
 
 
@@ -23,49 +24,37 @@ class bootstrap_con extends Controller
     	return view('create');
     }
 
-    public function store(/*Request $request*/){
+    public function store(contactRequest $request){
 
-     /*$this->validate($request, [
-    'contact_name' => 'required|unique:contactlaravel|max:25|min:4',
-    'contact_number' => 'required|max:16|min:13',
-    'contact_email' => 'valid',
-    ]);*/
-     $Inputs=Input::all();
-/*     $contactNumber=Input::get('c_number');
-     $contactEmail=Input::get('c_email');
-        $data=array(
-            'contact_name'=>$contactName,
-            'contact_number'=>$contactNumber,
-            'contact_email'=>$contactEmail,
+
+
+       $Inputs=Input::all();
+
+
+
+    
+        /*$data=array(
+            'contact_name'=>$Inputs["c_name"],
+            'contact_number'=>$Inputs["c_number"],
+            'contact_email'=>$Inputs["c_email"],
             
-        );
+        );*/
 
-        $response=labootstrap_model::create($data);
-        if($response)
-        {
-            return redirect('index');
-        }
 
-    }*/
-    $rules = array(
-        'contact_name' =>'required|min:5|max:25' , 
-        'contact_number' =>'required|min:11|max:16' ,
-        'contact_email' =>'email' ,
 
-);
+    // contactModel::create($request->all($data));
+     contactModel::create($request->all());
 
-    $validation=Validator::make($Inputs,$rules);
+     
+     return redirect('index');
 
-    if ($validation->fails()) {
-         return redirect('create')->with_errors($validation->errors);
-    }
 
 }
 
     public function delete($contact_id){
     	if (isset($contact_id)) {
 
-    		labootstrap_model::where('contact_id', $contact_id)->delete();
+    		contactModel::where('contact_id', $contact_id)->delete();
     		return redirect('index');
     		//$record = labootstrap_model::find($contact_id);
     		/*if ($record) {
@@ -78,7 +67,7 @@ class bootstrap_con extends Controller
     	}
     }
       public function edit($contact_id){
-        $edit_contact = DB::table('contactlaravel')->where('contact_id',$contact_id)->get();
+        $edit_contact = DB::table('contactLaravel')->where('contact_id',$contact_id)->get();
 
 /*        var_dump($edit_contact);
         die();*/
@@ -91,6 +80,7 @@ class bootstrap_con extends Controller
 
        /* var_dump($contact_id);
         die();*/
+        //$page=$_GET['page'];
         $contactName=Input::get('c_name');
         $contactNumber=Input::get('c_number');
         $contactEmail=Input::get('c_email');
@@ -101,7 +91,7 @@ class bootstrap_con extends Controller
             
         );
 
-        DB::table('contactlaravel')
+        $update=DB::table('contactLaravel')
             ->where('contact_id', $contact_id)
             ->update($updataData);
 
@@ -111,6 +101,13 @@ class bootstrap_con extends Controller
         if ($update) {
             return redirect('index');
         }
+    }
+
+    public function debug($data){
+       echo "<pre>";
+       print_r($data);
+       echo "</pre>";
+       die();
     }
 }
 
